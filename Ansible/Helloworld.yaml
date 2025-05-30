@@ -4,3 +4,10 @@
   - name: Print Hello World
     ansible.builtin.debug:
       msg: "Hello World"
+
+- name: Hello World
+  hosts: Local
+  tasks:
+   - name: Print Hello World
+     ansible.builtin.debug:
+       msg: "Hello World from localhost" 
