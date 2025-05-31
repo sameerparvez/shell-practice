@@ -1,0 +1,20 @@
+- name: vaiables
+  hosts: local
+  connection: local
+  vars:
+    COURSE: ansible
+    Duration: 2months
+    TIME: 1HR
+  tasks:
+    - name: print_variables
+      ansible.builtin.debug:
+       msg: "Hello All the topic discussed is on {{COURSE}}, The course in upto {{Duration}}, for {{TIME}} daily"
+  tasks:
+    - name: 
+      vars:
+        COURSE: DevOps
+        Duration: 3months
+        TIME: 2HR
+      ansible.builtin.debug:
+       msg: "Hello All the topic discussed is on {{COURSE}}, The course in upto {{Duration}}, for {{TIME}} daily"
+    
