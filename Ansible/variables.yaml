@@ -1,5 +1,6 @@
 - name: vaiables
   hosts: local
+  connection: local
   vars:
     COURSE: ansible
     Duration: 2months
