@@ -9,7 +9,7 @@
     - name: print_variables
       ansible.builtin.debug:
        msg: "Hello All the topic discussed is on {{COURSE}}, The course in upto {{Duration}}, for {{TIME}} daily"
-  tasks:
+  
     - name: task_variables again
       vars:
         COURSE: DevOps
