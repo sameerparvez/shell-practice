@@ -1,0 +1,10 @@
+- name: variables from varfile
+  hosts: local
+  connection: local
+  vars_files:
+    - course.yaml
+  tasks:
+    - name: print from vars_files
+      ansible.builtin.debug:
+        msg: "Hello All the topic discussed is on {{COURSE}}, The course in upto {{Duration}}, for {{TIME}} daily" 
+        
