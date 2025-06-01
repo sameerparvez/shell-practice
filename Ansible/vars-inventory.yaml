@@ -4,4 +4,4 @@
   tasks:
     -name: print from inventory
     ansible.builtin.debug:
-     msg: "Hello all the topic discussed is on {{COURSE}}, The course in upto {{DURATION}}, for {{TIME}} daily"
+      msg: "Hello all the topic discussed is on {{COURSE}}, The course in upto {{DURATION}}, for {{TIME}} daily"
