@@ -1,0 +1,18 @@
+- name: Print variables
+  hosts: localhost
+  connection: local
+  vars:
+    DURATION: 2months # this is a number
+    COURSE: "DevOps with AWS" # this is a string
+    AVAILABILITY: true # this is a boolean
+    TOOLS: 
+      - ansible
+      - terraform
+      - docker
+    CONCEPTS:
+     CI: Jenkins
+     CD: Gitlab
+  tasks:
+    - name: Print course details
+      ansible.builtin.debug:
+      msg: "The course is {{ COURSE }}, with duration of {{ DURATION }}, the concepts discussed are{{ CONCEPTS }}, the tools used are {{ TOOLS }},  is the course all days {{AVAILABILITY}}"

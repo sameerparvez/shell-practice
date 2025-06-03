@@ -6,3 +6,4 @@
       ansible.builtin.debug:
         msg: "Hello {{name}}, your age is {{age}}"
       
+     # ansible-playbook -i inventory.ini var-args.yaml -e "name=sameer" -e "age=23" --- cmd
