@@ -5,11 +5,13 @@
     DURATION: 2months # this is a number
     COURSE: "DevOps with AWS" # this is a string
     AVAILABILITY: true # this is a boolean
-    TOOLS: 
+    TOOLS: # this is a list[]
       - ansible
       - terraform
       - docker
-    CONCEPTS:
+    CONCEPTS: # this is a dictionary
+      - CI: "Jenkins"
+      - CD: "Gitlab"
      CI: Jenkins
      CD: Gitlab
   tasks:
