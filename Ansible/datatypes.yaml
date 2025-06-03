@@ -13,6 +13,6 @@
      CI: Jenkins
      CD: Gitlab
   tasks:
-    - name: Print course details
-      ansible.builtin.debug:
+   - name: Print course details
+     ansible.builtin.debug:
       msg: "The course is {{ COURSE }}, with duration of {{ DURATION }}, the concepts discussed are{{ CONCEPTS }}, the tools used are {{ TOOLS }},  is the course all days {{AVAILABILITY}}"
