@@ -1,0 +1,11 @@
+- name: loops
+  hosts: localhost
+  connection: local
+  tasks:
+   - name: print loops
+     ansible.buitin.debug:
+      msg: "Hello , {{ item }}" #item is reserved keyword in ansible
+     loop:
+      - Ansible
+      - DevOps
+      - Python
