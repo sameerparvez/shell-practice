@@ -3,5 +3,5 @@
   connection: local
   tasks:
     - name: print functions
-      ansible.buuiltin.debug:
+      ansible.builtin.debug:
         msg: "Hello, {{ person | default('sameer') }}"
