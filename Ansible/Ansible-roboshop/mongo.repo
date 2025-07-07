@@ -1,0 +1,10 @@
+{
+  "_id": "6638fa12345abc",
+  "name": "Alice",
+  "age": 30,
+  "skills": ["Java", "DevOps"],
+  "address": {
+    "city": "Hyderabad",
+    "zip": "500001"
+  }
+}
