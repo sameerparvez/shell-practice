@@ -1,0 +1,21 @@
+- name: cofiguring sql server
+  hosts: mysql
+  become: true
+  tasks:
+    - name: disable mysql module
+      ansible.builtin.dnf:
+        name: mysql
+        state: disabled
+
+    - name: enable mysql module stream 8.0
+      ansible.builtin.dnf:
+        name: mysql:8.0
+        state: enabled
+
+    - name: install mysql
+      ansible.builtin.dnf:
+        name: mysql
+        state: present
+
+    - name: setup root password
+      ansible.builtin.command: mysql_secure_installation --set-root-pass RoboShop@1
