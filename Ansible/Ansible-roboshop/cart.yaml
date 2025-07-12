@@ -5,12 +5,12 @@
     - name: disable nodejs module
       ansible.builtin.dnf:
         name: nodejs
-        state: disabled
+        state: absent
 
     - name: enable nodejs module stream 20
       ansible.builtin.dnf:
         name: nodejs:20
-        state: enabled
+        state: present
 
     - name: install nodejs
       ansible.builtin.dnf:
