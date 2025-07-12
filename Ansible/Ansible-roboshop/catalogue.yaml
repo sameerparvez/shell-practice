@@ -1,22 +1,22 @@
-- name: catalgue configuration
+- name: catalogue configuration
   hosts: catalgue
   become: true
   tasks:
     - name: disable nodejs
-      ansible.builtin.command: dnf disable nodejs -y
+      ansible.builtin.command: dnf module disable nodejs -y
 
     - name: enable nodejs 20
       ansible.builtin.command: dnf module enable nodejs:20 -y
 
     - name: install nodejs
       ansible.builtin.dnf:
-      name: nodejs
-      state: present
+        name: nodejs
+        state: present
 
     - name: create application directory
       ansible.builtin.file:
-      path: /app
-      state: directory
+        path: /app
+        state: directory
 
     - name: create roboshop user
       ansible.builtin.user:
@@ -30,18 +30,18 @@
 
     - name: unzip catalogue content
       ansible.builtin.unarchive:
-      src: /tmp/catalogue.zip
-      dest: /app
-      remote_src: yes
+        src: /tmp/catalogue.zip
+        dest: /app
+        remote_src: yes
 
     - name: install npm dependencies
       community.general.npm:
-      path: /app
+        path: /app
 
     - name: copy catalogue service to system directory
       ansible.builtin.copy:
-      src: catalogue.service
-      dest: /etc/systemd/system/catalogue.service
+        src: catalogue.service
+        dest: /etc/systemd/system/catalogue.service
 
     - name: reload systemd daemon 
       ansible.builtin.systemd:
@@ -55,22 +55,24 @@
 
     - name: copy mongodb repo
       ansible.builtin.copy:
-      src: mongo.repo
-      dest: /etc/yum.repos.d/mongo.repo
+        src: mongo.repo
+        dest: /etc/yum.repos.d/mongo.repo
 
     - name: install mongodb client
       ansible.builtin.dnf:
-      name: mongodb-org-shell
-      state: present
+        name: mongodb-org-shell
+        state: present
 
     - name: check loaded products 
-      ansible.buitlin.command: mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
-      register: catalogue.output
+      ansible.builtin.command: >
+        mongosh --host mongodb.daws84s.site
+        --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+      register: catalogue_output
 
     - name: print loaded products
       ansible.builtin.debug:
-        msg: {{ catalogue.output.stdout }}
+        msg: "{{ catalogue_output.stdout }}"
 
     - name: load catalogue data
       ansible.builtin.shell: mongosh --host mongodb.daws84s.site < /app/schema/catalogue.js
-      when: catalogue.output.stdout | int == -1
+      when: catalogue_output.stdout | int == -1
