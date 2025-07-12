@@ -65,7 +65,7 @@
 
     - name: check loaded products 
       ansible.builtin.command: >
-        mongosh --host mongodb.daws84s.site
+      mongosh --host mongodb.daws84s.site
         --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
       register: catalogue_output
 
