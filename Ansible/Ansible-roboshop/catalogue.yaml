@@ -43,7 +43,7 @@
         src: catalogue.service
         dest: /etc/systemd/system/catalogue.service
 
-    - name: reload systemd daemon 
+    - name: reload systemd daemon
       ansible.builtin.systemd:
         daemon_reload: yes
 
@@ -51,7 +51,7 @@
       ansible.builtin.service:
         name: catalogue
         state: started
-        enabled: yes   
+        enabled: yes
 
     - name: copy mongodb repo
       ansible.builtin.copy:
@@ -63,9 +63,8 @@
         name: mongodb-org-shell
         state: present
 
-    - name: check loaded products 
-      ansible.builtin.command: >
-      mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+    - name: check products loaded or not
+      ansible.builtin.command: mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
       register: catalogue_output
 
     - name: print loaded products
